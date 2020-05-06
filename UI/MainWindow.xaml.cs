@@ -31,19 +31,19 @@ namespace UI
         public MainWindow()
         {
             InitializeComponent();
-            getWeather();
+         
         }
 
         private void btnShow_Click(object sender, RoutedEventArgs e)
         {
-           
+            getWeather(tbInputName.Text);
         }
 
-        void getWeather()
+        void getWeather(string name)
         {
             using (WebClient web = new WebClient())
             {
-                string url = string.Format("https://api.openweathermap.org/data/2.5/weather?q=London&appid=291c93497e96ae5f8e2b01e60a34a1c1&unit=metric");
+                string url = string.Format($"https://api.openweathermap.org/data/2.5/weather?q={name}&appid=291c93497e96ae5f8e2b01e60a34a1c1&unit=metric");
 
                 var json = web.DownloadString(url);
 
